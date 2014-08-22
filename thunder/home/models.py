@@ -6,3 +6,5 @@ class Account(models.Model):
 	def __unicode__(self):
 		#mysql  give id aoto
 		return self.account
+	def as_json(self):
+		return dict(account=self.account, passwd=self.passwd)
