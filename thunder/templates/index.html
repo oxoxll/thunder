@@ -67,7 +67,7 @@ function AccountListCtrl($scope, $http) {
         }).success(function(response, status, headers, config){
             console.log(response);
             $scope.accounts = response.accounts;
-            btn.button('reset')
+            changeBtn.button('reset')
         });
     }
 
