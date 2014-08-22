@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 # from django.template import loader,Context
 from django.http import HttpResponse
-from django.utils import simplejson
+import json
 from models import Account
 
 def  index(req):
@@ -11,14 +11,5 @@ def  index(req):
 def acc(req,page):
 	acc_list = Account.objects.all()
 	test_acc_list = acc_list[0:5]
-	#acc_str  = map(str, test_acc_list)
-	return HttpResponse(' '.join(test_acc_list))
-
-	# render_to_response('test.html',{'acc_list':test_acc_list})
-	# acc_str = map(str,acc_list)
-	# start_num=number*5
-	# end_num=start_num+5
-	# acc_response = acc[start_num:end_num]
-
-	# return HttpResponse(simplejson.dumps(test_num))
-
+	response_data = {'accounts': test_acc_list}
+	return HttpResponse(json.dumps(response_data), content_type="application/json")
