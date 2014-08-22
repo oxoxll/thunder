@@ -65,7 +65,6 @@ function AccountListCtrl($scope, $http) {
             method: 'GET',
             url: '/' + page + '/'
         }).success(function(response, status, headers, config){
-            console.log(response);
             $scope.accounts = response.accounts;
             changeBtn.button('reset')
         });
@@ -76,6 +75,7 @@ function AccountListCtrl($scope, $http) {
         while(newPage == page){
             newPage = parseInt(Math.random() * 8) + 1;
         }
+        page = newPage;
         return newPage;
     }
     changeBtn.button('换一波...');
