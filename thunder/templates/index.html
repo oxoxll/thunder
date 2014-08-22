@@ -40,7 +40,7 @@
         </div>
         
     </div>
-    <div class="row"><button class="btn col-xs-offset-6 btn-primary btn-lg" ng-click="change()">换一波</button></div>
+    <div class="row"><button id="changeBtn" class="btn col-xs-offset-6 btn-primary btn-lg" ng-click="change()">换一波</button></div>
 </div>
 
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
@@ -50,34 +50,36 @@
 
 <script type="text/javascript">
 function AccountListCtrl($scope, $http) {
-
+    var changeBtn = $('#changeBtn');
+    var page = 1;
     $scope.change = function () {
-        getAccounts();
+        getAccounts(getRandonPage());
     };
 
     $scope.copy = function (target) {
         alert('复制成功');
     };
 
-    function getAccounts() {
+    function getAccounts(page) {
         $http({
             method: 'GET',
-            url: '/1/'
+            url: '/' + page + '/'
         }).success(function(response, status, headers, config){
             console.log(response);
             $scope.accounts = response.accounts;
+            btn.button('reset')
         });
     }
-    getAccounts();
 
-    function random(n) {
-        var ret = '';
-        for (var i = 0; i < n; i++) {
-            ret += randomArr[parseInt(Math.random() * 62)];
+    function getRandonPage(){
+        var newPage = parseInt(Math.random() * 8) + 1;
+        while(newPage == page){
+            newPage = parseInt(Math.random() * 8) + 1;
         }
-        return ret;
+        return newPage;
     }
-
+    changeBtn.button('换一波...');
+    getAccounts(page);
 }
 </script>
 
