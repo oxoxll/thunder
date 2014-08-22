@@ -10,7 +10,7 @@ def  index(req):
 
 def acc(req,page):
 	acc_list = Account.objects.all()
-	test_acc_list = acc_list[(page-1)*5:page*5]
+	test_acc_list = acc_list[(int(page)-1)*5:int(page)*5]
 	results = [ob.as_json() for ob in test_acc_list]
 	response_data = {'accounts': results}
 	return HttpResponse(simplejson.dumps(response_data), content_type="application/json")
