@@ -11,8 +11,8 @@ def  index(req):
 def acc(req,page):
 	acc_list = Account.objects.all()
 	test_acc_list = acc_list[0:5]
-	acc_str  = map(str, test_acc_list)
-	return HttpResponse("<p>" + ' '.join(acc_str) + "</p>")
+	#acc_str  = map(str, test_acc_list)
+	return HttpResponse(' '.join(test_acc_list))
 
 	# render_to_response('test.html',{'acc_list':test_acc_list})
 	# acc_str = map(str,acc_list)
