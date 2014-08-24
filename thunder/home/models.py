@@ -7,4 +7,5 @@ class Account(models.Model):
 		#mysql  give id aoto
 		return self.account
 	def as_json(self):
-		return dict(account=self.account, passwd=self.passwd)
+		# return dict(account=self.account, passwd=self.passwd)
+		return {'account':self.account, 'passwd':self.passwd)
