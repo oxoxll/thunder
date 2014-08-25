@@ -16,15 +16,27 @@
 .account-info .row {
   margin-bottom: 10px;
 }
+#bg_img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+#bg_img>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+}
 </style>
 </head>
 <body>
-<div class="navbar navbar-default">
-    <div class="container-fluid top-navbar">
-        <div class="navbar-header">
-            <a href="#" class="navbar-brand">迅雷vip账号</a>
-        </div>
-    </div>
+<div id="bg_img">
+    <img src="http://115.29.170.111/static/img/bg.jpg">
 </div>
 <div class="container account-info" ng-controller="AccountListCtrl">
     <div class="row" ng-repeat="account in accounts">
